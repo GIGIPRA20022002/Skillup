@@ -1,28 +1,33 @@
 import ast
+import joblib
+# Importamos a nuestro experto en ciclos
+from src.core.ciclos_analyzer import analizar_while
 
 def analizar_codigo(arbol):
+    # Características por defecto si el código no tiene nada
     caracteristicas = {"posible_ciclo_infinito": 0, "variable_control": 0}
     
+    # El Orquestador solo recorre el árbol buscando estructuras
     for nodo in ast.walk(arbol):
         if isinstance(nodo, ast.While): 
-            caracteristicas["posible_ciclo_infinito"] = 1 
-            
-            if isinstance(nodo.test, ast.Compare) and isinstance(nodo.test.left, ast.Name):
-                sospechoso = nodo.test.left.id
-                
-                for instruccion in nodo.body:
-                    # Chequeo de asignación (x = x + 1)
-                    if isinstance(instruccion, ast.Assign):
-                        if isinstance(instruccion.targets[0], ast.Name) and instruccion.targets[0].id == sospechoso:
-                            caracteristicas["variable_control"] = 1
-                    
-                    # Chequeo de incremento (x += 1)
-                    if isinstance(instruccion, ast.AugAssign):
-                        if isinstance(instruccion.target, ast.Name) and instruccion.target.id == sospechoso:
-                            caracteristicas["variable_control"] = 1
+            datos_ciclo = analizar_while(nodo)
+            caracteristicas.update(datos_ciclo)
     
 
-    if caracteristicas["variable_control"] == 1:
-        caracteristicas["posible_ciclo_infinito"] = 0
+    
+    modelo_ia = joblib.load("models/modelo_ciclos.pkl")
+    
+    pistas_ia = [[
+    caracteristicas.get("posible_ciclo_infinito", 0), 
+    caracteristicas.get("variable_control", 0),
+    caracteristicas.get("es_while_true", 0),
+    caracteristicas.get("tiene_break", 0),
+    caracteristicas.get("es_ciclo_vacio", 0),
+    caracteristicas.get("incrementa_otra_variable", 0),
+    caracteristicas.get("resetea_variable", 0)
+    ]]
+    
+    prediccion = modelo_ia.predict(pistas_ia)
+    caracteristicas["diagnostico_ia_infinito"] = int(prediccion[0])
 
     return caracteristicas

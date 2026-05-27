@@ -14,6 +14,12 @@ for archivo in archivos_folder :
     try:
         tree = ast.parse(codigo_texto)
         resultado = analizar_codigo(tree)
+        
+        if "bueno" in archivo:
+            resultado["es_infinito"] = 0  
+        elif "malo" in archivo:
+            resultado["es_infinito"] = 1
+
         dataset_crudo.append(resultado)
     except SyntaxError as e:
         print(f"Error de sintaxis: {e}")
