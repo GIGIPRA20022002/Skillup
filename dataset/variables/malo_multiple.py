@@ -1,0 +1,3 @@
+def asignar_valores():
+    a, b, c, d = 1, 2, 3, 4
+    return a + b + c + d

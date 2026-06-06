@@ -4,18 +4,17 @@ def analizar_if (nodo) :
 
 
     datos_if = {
-        "tiene_condicional" : 1,
-        "condicion_redundante": 0 ,
-        "if_vacio" : 0,
-        "comparacion_booleana":0
+        "tiene_condicional" :   1,
+        "condicion_redundante": 0,
+        "if_vacio" :            0,
+        "comparacion_booleana": 0
     }
 
-#LOGICA PARA DETECTAR CONDICIONALES REDUNDANTES#
-# Si la condición es una constante booleana (True o False), se considera redundante.
+    1.#LOGICA PARA DETECTAR CONDICIONALES REDUNDANTES
     if isinstance (nodo.test,ast.Constant) :
         if isinstance(nodo.test.value,bool):
             datos_if["condicion_redundante"] = 1
-# Si la condición es una comparación entre dos variables o entre una variable y una constante, se considera redundante si ambas partes son iguales.
+    2.# Si la condición es una comparación entre dos variables o entre una variable y una constante, se considera redundante si ambas partes son iguales.
     if isinstance(nodo.test,ast.Compare):
         izquierda = nodo.test.left
         derecha = nodo.test.comparators[0]

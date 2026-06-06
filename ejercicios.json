@@ -1,0 +1,144 @@
+{
+  "ejercicios": [
+    {
+      "id": 1,
+      "modulo": "variables",
+      "titulo": "Inventario de Tienda de Videojuegos",
+      "descripcion": "Declara variables con nombres claros para almacenar el nombre del juego, precio y cantidad disponible sin usar palabras reservadas.",
+      "codigo_inicial": "def inventario():\n    # Declara variables descriptivas\n    pass"
+    },
+    {
+      "id": 2,
+      "modulo": "variables",
+      "titulo": "Sistema de Cuenta Bancaria",
+      "descripcion": "Crea variables para saldo, número de cuenta y nombre del titular usando buenas prácticas.",
+      "codigo_inicial": "def cuenta_bancaria():\n    # Define variables correctamente\n    pass"
+    },
+    {
+      "id": 3,
+      "modulo": "variables",
+      "titulo": "Perfil de Jugador",
+      "descripcion": "Define variables para nombre del jugador, nivel y puntos de experiencia evitando nombres ambiguos.",
+      "codigo_inicial": "def perfil_jugador():\n    # Crea variables claras\n    pass"
+    },
+    {
+      "id": 4,
+      "modulo": "variables",
+      "titulo": "Sistema de Temperatura",
+      "descripcion": "Declara variables para temperatura actual, mínima y máxima sin sobrescribir funciones de Python.",
+      "codigo_inicial": "def temperatura():\n    # Declara variables\n    pass"
+    },
+    {
+      "id": 5,
+      "modulo": "variables",
+      "titulo": "Datos de Pedido",
+      "descripcion": "Crea variables para número de pedido, cliente y total a pagar usando nombres descriptivos.",
+      "codigo_inicial": "def pedido():\n    # Define variables\n    pass"
+    },
+    {
+      "id": 6,
+      "modulo": "ciclos",
+      "titulo": "Conteo de Monedas",
+      "descripcion": "Usa un ciclo para contar monedas en una lista sin generar ciclos infinitos.",
+      "codigo_inicial": "def contar_monedas(monedas):\n    # Usa un ciclo seguro\n    pass"
+    },
+    {
+      "id": 7,
+      "modulo": "ciclos",
+      "titulo": "Recorrer Inventario",
+      "descripcion": "Recorre una lista de productos mostrando cada uno.",
+      "codigo_inicial": "def mostrar_productos(productos):\n    # Recorre la lista\n    pass"
+    },
+    {
+      "id": 8,
+      "modulo": "ciclos",
+      "titulo": "Experiencia de Jugador",
+      "descripcion": "Suma puntos de experiencia usando un ciclo for correctamente.",
+      "codigo_inicial": "def sumar_experiencia(puntos):\n    # Usa ciclo for\n    pass"
+    },
+    {
+      "id": 9,
+      "modulo": "ciclos",
+      "titulo": "Validación de Intentos",
+      "descripcion": "Controla intentos de login con un ciclo while evitando bucles infinitos.",
+      "codigo_inicial": "def intentos_login():\n    # Controla intentos\n    pass"
+    },
+    {
+      "id": 10,
+      "modulo": "ciclos",
+      "titulo": "Lista de Compras",
+      "descripcion": "Recorre una lista de compras e imprime cada elemento.",
+      "codigo_inicial": "def lista_compras(items):\n    # Itera correctamente\n    pass"
+    },
+    {
+      "id": 11,
+      "modulo": "condicionales",
+      "titulo": "Validación de Edad",
+      "descripcion": "Determina si un usuario es mayor de edad usando condicionales.",
+      "codigo_inicial": "def validar_edad(edad):\n    # Usa condicionales\n    pass"
+    },
+    {
+      "id": 12,
+      "modulo": "condicionales",
+      "titulo": "Sistema de Descuentos",
+      "descripcion": "Aplica descuentos según el monto de compra usando lógica booleana.",
+      "codigo_inicial": "def calcular_descuento(total):\n    # Aplica condiciones\n    pass"
+    },
+    {
+      "id": 13,
+      "modulo": "condicionales",
+      "titulo": "Estado del Jugador",
+      "descripcion": "Determina si un jugador está vivo o eliminado según su vida.",
+      "codigo_inicial": "def estado_jugador(vida):\n    # Evalúa condiciones\n    pass"
+    },
+    {
+      "id": 14,
+      "modulo": "condicionales",
+      "titulo": "Detector de Fraude",
+      "descripcion": "Evalúa si una transacción es sospechosa según su monto.",
+      "codigo_inicial": "def detectar_fraude(monto):\n    # Implementa lógica\n    pass"
+    },
+    {
+      "id": 15,
+      "modulo": "condicionales",
+      "titulo": "Clima",
+      "descripcion": "Determina el tipo de clima según la temperatura.",
+      "codigo_inicial": "def clima(temp):\n    # Usa if/elif/else\n    pass"
+    },
+    {
+      "id": 16,
+      "modulo": "funciones",
+      "titulo": "Calcular Total",
+      "descripcion": "Crea una función que retorne el total de una compra.",
+      "codigo_inicial": "def calcular_total(precios):\n    # Retorna valor\n    pass"
+    },
+    {
+      "id": 17,
+      "modulo": "funciones",
+      "titulo": "Nivel de Jugador",
+      "descripcion": "Retorna el nivel de un jugador según su experiencia.",
+      "codigo_inicial": "def nivel_jugador(exp):\n    # Devuelve nivel\n    pass"
+    },
+    {
+      "id": 18,
+      "modulo": "funciones",
+      "titulo": "Promedio de Notas",
+      "descripcion": "Calcula y retorna el promedio de una lista de notas.",
+      "codigo_inicial": "def promedio(notas):\n    # Calcula promedio\n    pass"
+    },
+    {
+      "id": 19,
+      "modulo": "funciones",
+      "titulo": "Conversión de Moneda",
+      "descripcion": "Convierte una cantidad de pesos a dólares y retorna el resultado.",
+      "codigo_inicial": "def convertir(moneda):\n    # Retorna conversión\n    pass"
+    },
+    {
+      "id": 20,
+      "modulo": "funciones",
+      "titulo": "Validar Usuario",
+      "descripcion": "Retorna True o False si un usuario cumple condiciones de acceso.",
+      "codigo_inicial": "def validar_usuario(usuario, clave):\n    # Retorna booleano\n    pass"
+    }
+  ]
+}

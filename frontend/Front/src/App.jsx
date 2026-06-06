@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LevelMap from './components/LevelMap';
 import CodeEditor from './components/CodeEditor';
-import { ChatBox } from './components/ChatBox.jsx';
+import ChatBox from './components/ChatBox';
 import { evaluateCode } from './services/api';
 
 function App() {

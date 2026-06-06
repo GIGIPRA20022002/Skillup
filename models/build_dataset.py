@@ -5,7 +5,7 @@ from src.core.analyzer import analizar_codigo
 
 dataset_crudo = []
 
-carpetas = ["ciclos","condicionales"]
+carpetas = ["ciclos","condicionales","funciones","variables"]
 
 for carpeta in carpetas:
     archivos_folder = os.listdir(f"dataset/{carpeta}")
@@ -19,12 +19,19 @@ for carpeta in carpetas:
             
             resultado["es_infinito"] = 0
             resultado["es_error_condicional"] = 0
+            resultado["mal_definido"] = 0
+            resultado["practica_incorrecta"] = 0
 
             if "malo" in archivo:
                 if carpeta == "ciclos":
                     resultado["es_infinito"] = 1
                 elif carpeta == "condicionales":
                     resultado["es_error_condicional"] = 1
+                elif carpeta == "funciones":
+                    resultado["mal_definido"] = 1
+                elif carpeta == "variables":
+                    resultado["practica_incorrecta"] = 1
+
 
             dataset_crudo.append(resultado)
         except SyntaxError as e:
