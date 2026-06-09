@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def armar_prompt_maestro(errores, codigo_estudiante):
     
