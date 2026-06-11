@@ -1,41 +1,14 @@
 // src/data/exercises.js
 
 export const MODULES_ORDER = [
-  { id: 'logica', name: 'Lógica Algorítmica Básica', order: 1 },
-  { id: 'funciones', name: 'Funciones', order: 2 },
-  { id: 'variables', name: 'Uso de Variables', order: 3 },
-  { id: 'ciclos', name: 'Ciclos', order: 4 },
-  { id: 'condicionales', name: 'Estructuras Condicionales', order: 4 } // Mismo orden que ciclos
+  { id: 'funciones', name: 'Funciones', order: 1 },
+  { id: 'variables', name: 'Uso de Variables', order: 2 },
+  { id: 'ciclos', name: 'Ciclos', order: 3 },
+  { id: 'condicionales', name: 'Estructuras Condicionales', order: 3 } // Mismo orden que ciclos
 ];
 
 // Definición de ejercicios por módulo
 export const EXERCISES = {
-  logica: {
-    moduleId: 'logica',
-    moduleName: 'Lógica Algorítmica Básica',
-    exercises: [
-      {
-        id: 1,
-        title: 'Suma de dos números',
-        description: 'Escribe un programa que solicite dos números al usuario y muestre su suma.',
-        initialCode: '# Escribe tu código aquí\nnumero1 = int(input("Ingresa el primer número: "))\nnumero2 = int(input("Ingresa el segundo número: "))\n# Calcula y muestra la suma',
-        validation: (output, code) => {
-          // Validación básica: debe imprimir la suma
-          return output.includes('suma') || /(\d+)/.test(output);
-        }
-      },
-      {
-        id: 2,
-        title: 'Par o impar',
-        description: 'Escribe un programa que determine si un número ingresado es par o impar.',
-        initialCode: '# Escribe tu código aquí\nnumero = int(input("Ingresa un número: "))\n# Determina si es par o impar',
-        validation: (output, code) => {
-          return output.includes('par') || output.includes('impar');
-        }
-      }
-    ]
-  },
-  
   funciones: {
     moduleId: 'funciones',
     moduleName: 'Funciones',
