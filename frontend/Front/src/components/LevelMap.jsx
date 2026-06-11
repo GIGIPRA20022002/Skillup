@@ -1,39 +1,51 @@
-const modules = [
-  { id: 'logica', name: '🔒 Lógica', unlocked: true },
-  { id: 'variables', name: '🔒 Variables', unlocked: true },
-  { id: 'funciones', name: '🔒 Funciones', unlocked: true },
-  { id: 'ciclos', name: '🔓 Ciclos', unlocked: true },
-  { id: 'listas', name: '🔒 Listas', unlocked: false },
-];
+// src/components/LevelMap.jsx - VERSIÓN ACTUALIZADA
+import { MODULES_ORDER, EXERCISES } from '../data/exercises';
 
-function LevelMap({ currentModule, onSelectModule }) {
+function LevelMap({ currentModule, onSelectModule, isModuleUnlocked, getModuleProgress }) {
   return (
     <div>
       <h3>Niveles</h3>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {modules.map(mod => (
-          <li key={mod.id} style={{ marginBottom: '0.5rem' }}>
-            <button
-              onClick={() => mod.unlocked && onSelectModule(mod.id)}
-              disabled={!mod.unlocked}
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                backgroundColor: currentModule === mod.id ? '#007acc' : '#2d2d2d',
-                color: 'white',
-                border: 'none',
-                borderRadius: '6px',
-                cursor: mod.unlocked ? 'pointer' : 'not-allowed',
-                opacity: mod.unlocked ? 1 : 0.5,
-                fontSize: '1rem',
-                textAlign: 'left',
-                transition: 'background-color 0.2s'
-              }}
-            >
-              {mod.name}
-            </button>
-          </li>
-        ))}
+        {MODULES_ORDER.map(mod => {
+          const isUnlocked = isModuleUnlocked(mod.id);
+          const progress = getModuleProgress(mod.id);
+          const isCompleted = progress.completed === progress.total && progress.total > 0;
+          
+          return (
+            <li key={mod.id} style={{ marginBottom: '0.5rem' }}>
+              <button
+                onClick={() => isUnlocked && onSelectModule(mod.id)}
+                disabled={!isUnlocked}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  backgroundColor: currentModule === mod.id ? '#007acc' : 
+                                  isCompleted ? '#4caf50' : '#2d2d2d',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: isUnlocked ? 'pointer' : 'not-allowed',
+                  opacity: isUnlocked ? 1 : 0.5,
+                  fontSize: '1rem',
+                  textAlign: 'left',
+                  transition: 'background-color 0.2s',
+                  position: 'relative'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>
+                    {isCompleted ? '✓ ' : (isUnlocked ? '🔓' : '🔒')} {mod.name}
+                  </span>
+                  {progress.total > 0 && (
+                    <span style={{ fontSize: '0.7rem', backgroundColor: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '10px' }}>
+                      {progress.completed}/{progress.total}
+                    </span>
+                  )}
+                </div>
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
