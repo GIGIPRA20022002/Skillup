@@ -57,7 +57,7 @@ def generar_feedback_ia(diagnostico, codigo_estudiante):
             genai.configure(api_key=api_key)
             
             # 3. Llamar al modelo (Gemini 1.5 Flash es ultrarrápido)
-            modelo = genai.GenerativeModel('gemini-1.5-flash-latest')
+            modelo = genai.GenerativeModel('gemini-2.0-flash')
             respuesta = modelo.generate_content(prompt)
             
             return respuesta.text
