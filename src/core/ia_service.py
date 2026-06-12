@@ -36,8 +36,11 @@ def generar_feedback_ia(diagnostico, codigo_estudiante):
     prompt = armar_prompt_maestro(errores_encontrados, codigo_estudiante)
     
     # 4. EL INTERRUPTOR UNIVERSAL
-    # Lee desde Render o tu .env. Si no hay nada, usa "mock" por defecto.
-    PROVEEDOR_IA = os.getenv("PROVEEDOR_IA", "mock").lower()
+    # Agregamos .strip() para destruir cualquier espacio en blanco accidental
+    PROVEEDOR_IA = os.getenv("PROVEEDOR_IA", "mock").strip().lower()
+    
+    # EL CHISMOSO: Esto imprimirá en la consola de Render exactamente lo que Python está viendo
+    print(f"🚨 DEBUG - Python está leyendo el interruptor como: '{PROVEEDOR_IA}'")
     
     if PROVEEDOR_IA == "openai":
         # Aquí irá el código de OpenAI (ChatGPT) cuando tengas la API Key
