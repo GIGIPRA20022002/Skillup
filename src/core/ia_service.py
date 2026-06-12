@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import google.generativeai as genai
 
 load_dotenv()
 
@@ -35,29 +36,39 @@ def generar_feedback_ia(diagnostico, codigo_estudiante):
     prompt = armar_prompt_maestro(errores_encontrados, codigo_estudiante)
     
     # 4. EL INTERRUPTOR UNIVERSAL
-    # Aquí defines qué IA vas a usar. Puede venir de un archivo .env en el futuro.
-    PROVEEDOR_IA = "mock" # Opciones futuras: "openai", "gemini", "claude"
+    # Lee desde Render o tu .env. Si no hay nada, usa "mock" por defecto.
+    PROVEEDOR_IA = os.getenv("PROVEEDOR_IA", "mock").lower()
     
     if PROVEEDOR_IA == "openai":
         # Aquí irá el código de OpenAI (ChatGPT) cuando tengas la API Key
-        # respuesta = llamar_api_openai(prompt)
-        # return respuesta
         pass
         
     elif PROVEEDOR_IA == "gemini":
-        # Aquí irá el código de Google Gemini cuando tengas la API Key
-        # respuesta = llamar_api_gemini(prompt)
-        # return respuesta
-        pass
+        # 1. Traer la llave secreta desde el entorno seguro (.env o Render)
+        api_key = os.getenv("API_KEY_SECRETA")
+        if not api_key:
+            return "🚨 Error del Servidor: No se encontró la API Key secreta de Google."
         
+        try:
+            # 2. Configurar la conexión con Google
+            genai.configure(api_key=api_key)
+            
+            # 3. Llamar al modelo (Gemini 1.5 Flash es ultrarrápido)
+            modelo = genai.GenerativeModel('gemini-1.5-flash')
+            respuesta = modelo.generate_content(prompt)
+            
+            return respuesta.text
+            
+        except Exception as e:
+            # Protegemos el backend por si Google se cae o la llave es inválida
+            return f"🚨 Error conectando con Gemini: {str(e)}"
+            
     else:
         # EL MOCK: Mientras el decano decide, devolvemos un texto simulando a la IA
-        # pero ya usando la lista REAL de errores que detectó tu modelo de Machine Learning.
         respuesta_simulada = (
-            f"🤖 [MODO SIMULACIÓN: Esperando API Key]\n\n"
+            f"🤖 [MODO SIMULACIÓN]\n\n"
             f"¡Hola! He revisado tu código. Noté que cometiste algunas prácticas que debemos corregir, "
             f"específicamente relacionadas con: **{', '.join(errores_encontrados)}**.\n\n"
-            f"Cuando el decano autorice la API, aquí aparecerá una explicación detallada de por qué "
-            f"estas son malas prácticas y cómo mejorarlas."
+            f"Cuando cambies el interruptor a Gemini, aquí aparecerá una explicación detallada."
         )
         return respuesta_simulada
